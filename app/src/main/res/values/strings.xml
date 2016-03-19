@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Workout</string>
+    <string-array name="workouts_description">
+        <item>5 Handstand push-ups\n10 1-legged squats\n15 Pull-ups</item>
+        <item>100 Pull-ups\n100 Push-ups\n100 Sit-ups\n100 Squats</item>
+        <item>5 Pull-ups\n10 Push-ups\n15 Squats</item>
+        <item>500 meter run\n21 x 1.5 pood kettleball swing\n21 x pull-ups</item>
+    </string-array>
+
 </resources>
