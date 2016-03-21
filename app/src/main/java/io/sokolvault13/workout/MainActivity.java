@@ -2,7 +2,9 @@ package io.sokolvault13.workout;
 
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends Activity implements WorkoutListFragment.WorkoutListListener {
 
@@ -14,12 +16,19 @@ public class MainActivity extends Activity implements WorkoutListFragment.Workou
 
     @Override
     public void itemClicked(long id) {
-        WorkoutDetailFragment fragmentDetails = new WorkoutDetailFragment();
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentDetails.setWorkout(id);
-        fragmentTransaction.replace(R.id.fragment_container, fragmentDetails);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        fragmentTransaction.commit();
+        View fragmentContainer = findViewById(R.id.fragment_container);
+        if (fragmentContainer != null) {
+            WorkoutDetailFragment fragmentDetails = new WorkoutDetailFragment();
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentDetails.setWorkout(id);
+            fragmentTransaction.replace(R.id.fragment_container, fragmentDetails);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            fragmentTransaction.commit();
+        } else {
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID, (int) id);
+            startActivity(intent);
+        }
     }
 }
