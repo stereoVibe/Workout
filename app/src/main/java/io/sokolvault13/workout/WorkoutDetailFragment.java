@@ -17,11 +17,13 @@ public class WorkoutDetailFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if (savedInstanceState != null){
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
     }
 
@@ -36,6 +38,11 @@ public class WorkoutDetailFragment extends Fragment {
             title.setText(workout.getName());
             description.setText(workout.getDescription());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putLong("workoutId", workoutId);
     }
 
     public void setWorkout(long id){

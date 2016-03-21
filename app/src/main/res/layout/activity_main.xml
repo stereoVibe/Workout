@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,11 +11,16 @@
     tools:context="io.sokolvault13.workout.MainActivity">
 
     <fragment
-        class="io.sokolvault13.workout.WorkoutDetailFragment"
-        android:id="@+id/detail_frag"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_workout_detail"/>
+        class="io.sokolvault13.workout.WorkoutListFragment"
+        android:id="@+id/list_frag"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"/>
 
-</RelativeLayout>
+</LinearLayout>
